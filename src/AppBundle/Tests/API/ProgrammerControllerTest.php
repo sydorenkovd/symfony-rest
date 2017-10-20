@@ -9,7 +9,9 @@
 namespace AppBundle\Tests\API;
 
 
-class ProgrammerControllerTest extends \PHPUnit_Framework_TestCase
+use AppBundle\Tests\ApiTestCase;
+
+class ProgrammerControllerTest extends ApiTestCase
 {
 
     public function testPOST()
