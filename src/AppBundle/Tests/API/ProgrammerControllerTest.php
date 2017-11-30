@@ -22,7 +22,7 @@ class ProgrammerControllerTest extends ApiTestCase
                 'exceptions' => false
             ]
         ]);
-        $nickname = 'ObjectOrienter'.rand(0, 999);
+        $nickname = 'ObjectOrienter';
         $data = array(
             'nickname' => $nickname,
             'avatarNumber' => 5,
@@ -36,7 +36,10 @@ class ProgrammerControllerTest extends ApiTestCase
         $this->assertEquals(201, $response->getStatusCode());
         $this->assertTrue($response->hasHeader('Location'));
 
+        $this->assertEquals('/api/programmers/ObjectOrienter', $response->getHeader('Location'));
+
         $finishedData = json_decode($response->getBody(true), true);
         $this->assertArrayHasKey('nickname', $finishedData);
+        $this->assertEquals('ObjectOrienter', $finishedData['nickname']);
     }
 }
